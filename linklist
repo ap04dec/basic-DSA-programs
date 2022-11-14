@@ -1,0 +1,91 @@
+#include <stdio.h>
+void insertend();
+void insertfront();
+void display();
+struct node  
+{  
+    int data;  
+    struct node *next;  
+};  
+struct node *head;  
+
+void main()
+{
+    int n,item;
+    
+    printf("1.Insert end\n");
+     printf("2.Insert front\n");
+    
+     printf("3.Display\n");
+      printf("Enter the case:");
+    
+
+    scanf("%d", &n);
+    switch (n)
+    {
+    case 1:
+    {
+        insertend();
+    }
+    break;
+    case 2:
+    {
+        insertfront();
+    }
+    break;
+    case 3:
+    {
+        display();
+    }
+    break;
+    default:
+    {
+        printf("invalid");
+    }
+    }
+
+    
+}
+void insertend(int item)
+    
+{  struct node *ptr = (struct node*)malloc(sizeof(struct node));     
+        struct node *temp;  
+        if(ptr == NULL)  
+        {  
+            printf("\nOVERFLOW");     
+        }  
+        else  
+        {  
+            ptr->data = item;  
+            if(head == NULL)  
+            {  
+                ptr -> next = NULL;  
+                head = ptr;  
+                printf("\nNode inserted");  
+            }  
+            else  
+            {  
+                temp = head;  
+                while (temp -> next != NULL)  
+                {  
+                    temp = temp -> next;  
+                }  
+                temp->next = ptr;  
+                ptr->next = NULL;  
+                printf("\nNode inserted");  
+              
+            }  
+        }  
+     
+     
+}
+void insertfront()
+{
+
+}
+void display()
+
+{
+    
+
+}
