@@ -1,0 +1,62 @@
+//insert at start in begining & end in DLL.
+#include<stdio.h>
+#include<stdlib.h>
+struct node 
+{int data;
+struct node*next;
+struct node*prev;
+};
+     void begin(int ,struct node** );
+      void end(int ,struct node** );
+      void display(struct node*);
+
+int main()
+{
+	struct node*start=NULL;
+	begin(3,&start);
+	begin(4,&start);
+     begin(5,&start);
+     end(6,&start);
+      end(7,&start);
+       end(8,&start);
+     
+     display(start);
+    
+	
+	return 0;
+}
+
+ void begin(int data ,struct node**start_address )
+     {
+     	struct node * new =(struct node*)malloc (sizeof(struct node));
+     	new->data=data;
+     	new->prev=NULL;
+     	if((*start_address)!=NULL)
+     	(*start_address)->prev=new;
+     	(*start_address)=new;
+	 }
+	void end(int data ,struct node**start_address )
+	{
+	    struct node* new =(struct node*)malloc(sizeof(struct node));
+	    new->data=data;
+	    new->next=NULL;
+	    struct node*ptr=*start_address;
+	    if(*start_address==NULL)
+	    {
+	        new->prev=NULL;
+	        *start_address=new;
+	        return;
+	    }
+	    while(ptr->next!=NULL)
+	    ptr=ptr->next;
+	    ptr->next=new;
+	    new->prev=ptr;
+	    return;
+	}
+	void display(struct node *ptr)
+	{
+	    while(ptr!=NULL)
+	    {printf("%d",ptr->data);
+	    ptr=ptr->next;
+	}
+	}	
